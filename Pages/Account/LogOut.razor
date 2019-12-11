@@ -1,0 +1,27 @@
+﻿@page "/user/logout"
+@attribute [IgnoreAntiforgeryToken]
+@inject SignInManager<IdentityUser> SignInManager
+@inject NavigationManager NavigationManager
+
+
+<h3>Component</h3>
+
+@code {
+
+    [CascadingParameter]
+    public Task<AuthenticationState> State { get; set; }
+
+    protected async override void OnInitialized()
+    {
+        var state = await State;
+
+
+
+        if (SignInManager.IsSignedIn(state.User))
+        {
+            await SignInManager.SignOutAsync();
+        }
+
+        NavigationManager.NavigateTo("/", true);
+    }
+}
