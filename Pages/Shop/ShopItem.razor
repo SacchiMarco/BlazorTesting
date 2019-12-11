@@ -1,0 +1,75 @@
+﻿@page "/item"
+
+<div class="card border-secondary" style="width: 18rem">
+    <h5 class="card-header text-center">Titel</h5>
+    <div class="card-body">
+        <img class="card-img" src="https://via.placeholder.com/120" />
+        <div class="card-text text-center m-2"> cardText</div>
+    </div>
+    <div class="card-footer">
+        <div class=" row">
+            <div class="col-6">
+                <button class="btn btn-info">Order</button>
+            </div>
+            <div class="col-6">
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button class="input-group-text btn-noshadow btn-my-hover buycouner-btn" @onclick="CountUp"><i class="fas fa-caret-left"></i></button>
+                    </div>
+                    <input class="form-control align-content-between text-center input-sm noshadow" @oninput="OnChangeCounter" type="number" value="@counter" />
+                    <div class="input-group-append">
+                        <button class="input-group-text btn-noshadow btn-my-hover buycouner-btn" @onclick="CountDown"><i class="fas fa-caret-right"></i></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public int counter { get; set; } = 1;
+
+    public void CountUp()
+    {
+        int ordersize = counter;
+        ordersize++;
+        CheckOrderSize(ordersize);
+    }
+
+    public void CountDown()
+    {
+        int ordersize = counter;
+        ordersize--;
+        CheckOrderSize(ordersize);
+    }
+
+    public void OnChangeCounter(ChangeEventArgs e)
+    {
+        if (!e.Value.Equals(""))
+        {
+            int value = Convert.ToInt32(e.Value);
+            CheckOrderSize(value);
+        }
+    }
+
+    public void CheckOrderSize(int ordersize)
+    {
+        if (ordersize <= 0)
+        {
+            counter = 1;
+        }
+        else if (ordersize >= 100)
+        {
+            counter = 99;
+        }
+        else
+        {
+            counter = ordersize;
+        }
+
+    }
+
+}
