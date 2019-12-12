@@ -11,10 +11,34 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+.icon {
+    font-size: 10px;
+}
 
-.btn-noshadow:focus, .btn-noshadow:active{
+.input-shopitemcounter {
+    border: 1px solid #ced4da;
+    max-width: 2rem;
+}
+
+.font-sice-800{
+    font-size: 0.800rem;
+}
+
+.card-my-block {
+    padding: .75rem 1.25rem;
+    background-color: rgb(255, 255, 255);
+    border-top: 1px solid rgba(0,0,0,.125);
+}
+
+.btn-noshadow:focus, .btn-noshadow:active {
     box-shadow: none !important;
     outline: 0;
+}
+
+.order-count-btn {
+    padding: 0px 4px 0px 4px;
+    font-weight: 600;
+    font-size: 1.125rem;
 }
 
 .btn-my-hover:hover{

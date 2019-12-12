@@ -1,25 +1,39 @@
 ﻿@page "/item"
 
-<div class="card border-secondary" style="width: 18rem">
+<div class="card border-secondary" style="max-width: 18rem">
     <h5 class="card-header text-center">Titel</h5>
     <div class="card-body">
         <img class="card-img" src="https://via.placeholder.com/120" />
         <div class="card-text text-center m-2"> cardText</div>
     </div>
+    <div class="card-my-block">
+        <div class="row">
+            <div class="col-6 text-center d-flex align-items-center font-sice-800">
+                Preis pro "Einheit"
+            </div>
+            <div class="col-6 text-right font-weight-bold">
+                XX.XX Fr.
+            </div>
+        </div>
+    </div>
     <div class="card-footer">
         <div class=" row">
-            <div class="col-6">
-                <button class="btn btn-info">Order</button>
+            <div class="col-6 text-center">
+                <button class="btn btn-primary btn-sm">In den <i class="fas fa-cart-plus"></i></button>
             </div>
-            <div class="col-6">
+            <div class="col-6 text-right">
 
-                <div class="input-group">
+                <div class="input-group input-group-height">
                     <div class="input-group-prepend">
-                        <button class="input-group-text btn-noshadow btn-my-hover buycouner-btn" @onclick="CountUp"><i class="fas fa-caret-left"></i></button>
+                        <div class="input-group-text btn-noshadow btn-sm order-count-btn @DisabeldDown" @onclick="CountDown">
+                            <span class="oi oi-minus icon"></span>
+                        </div>
                     </div>
-                    <input class="form-control align-content-between text-center input-sm noshadow" @oninput="OnChangeCounter" type="number" value="@counter" />
+                    <input class="form-control-plaintext form-control-sm text-center font-sice-800 noshadow input-shopitemcounter" readonly type="number" value="@counter" />
                     <div class="input-group-append">
-                        <button class="input-group-text btn-noshadow btn-my-hover buycouner-btn" @onclick="CountDown"><i class="fas fa-caret-right"></i></button>
+                        <div class="input-group-text btn-noshadow btn-sm order-count-btn @DisabeldUp" @onclick="CountUp">
+                            <span class="oi oi-plus icon"></span>
+                        </div>
                     </div>
 
                 </div>
@@ -31,45 +45,47 @@
 @code {
 
     public int counter { get; set; } = 1;
+    public string DisabeldDown { get; set; } = "btn-my-hover";
+    public string DisabeldUp { get; set; } = "btn-my-hover";
 
-    public void CountUp()
+    public async Task CountUp()
     {
         int ordersize = counter;
         ordersize++;
-        CheckOrderSize(ordersize);
+        await CheckOrderSize(ordersize);
     }
 
-    public void CountDown()
+    public async Task CountDown()
     {
         int ordersize = counter;
         ordersize--;
-        CheckOrderSize(ordersize);
+        await CheckOrderSize(ordersize);
     }
 
-    public void OnChangeCounter(ChangeEventArgs e)
+    public async Task CheckOrderSize(int ordersize)
     {
-        if (!e.Value.Equals(""))
+        await Task.Run(() =>
         {
-            int value = Convert.ToInt32(e.Value);
-            CheckOrderSize(value);
-        }
-    }
+            if (ordersize <= 0)
+            {
+                counter = 1;
+                DisabeldDown = "disabled";
+            }
+            else if (ordersize >= 100)
+            {
+                counter = 99;
+                DisabeldUp = "disabled";
+            }
+            else
+            {
+                counter = ordersize;
+                DisabeldUp = "btn-my-hover";
+                DisabeldDown = "btn-my-hover";
+            }
 
-    public void CheckOrderSize(int ordersize)
-    {
-        if (ordersize <= 0)
-        {
-            counter = 1;
-        }
-        else if (ordersize >= 100)
-        {
-            counter = 99;
-        }
-        else
-        {
-            counter = ordersize;
-        }
+        });
 
+        StateHasChanged();
     }
 
 }
