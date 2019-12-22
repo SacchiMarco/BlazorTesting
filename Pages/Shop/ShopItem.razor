@@ -21,17 +21,19 @@
             <div class="col-6 text-center">
                 <button class="btn btn-primary btn-sm">In den <i class="fas fa-cart-plus"></i></button>
             </div>
-            <div class="col-6 text-right">
+            <div class="col-6 flex-column-reverse">
 
-                <div class="input-group input-group-height">
+                <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text btn-noshadow btn-sm order-count-btn @DisabeldDown" @onclick="CountDown">
+                        <div class="input-group-text btn-noshadow btn-sm order-count-btn @DisabledDown" @onclick="CountDown">
                             <span class="oi oi-minus icon"></span>
                         </div>
                     </div>
-                    <input class="form-control-plaintext form-control-sm text-center font-sice-800 noshadow input-shopitemcounter" readonly type="number" value="@counter" />
+                    <input class="form-control-plaintext form-control-sm text-center font-sice-800 noshadow input-shopitemcounter" type="number"
+                           @bind-value="UpdateCounter"
+                           @bind-value:event="oninput" />
                     <div class="input-group-append">
-                        <div class="input-group-text btn-noshadow btn-sm order-count-btn @DisabeldUp" @onclick="CountUp">
+                        <div class="input-group-text btn-noshadow btn-sm order-count-btn @DisabledUp" @onclick="CountUp">
                             <span class="oi oi-plus icon"></span>
                         </div>
                     </div>
@@ -44,43 +46,65 @@
 
 @code {
 
-    public int counter { get; set; } = 1;
-    public string DisabeldDown { get; set; } = "btn-my-hover";
-    public string DisabeldUp { get; set; } = "btn-my-hover";
+    public int Counter = 1;
+    public string DisabledDown { get; set; } = "btn-my-hover";
+    public string DisabledUp { get; set; } = "btn-my-hover";
+
+    public int UpdateCounter
+    {
+        get => Counter;
+        set
+        {
+            if (value >= 100)
+            {
+                Counter = 99;
+                DisabledUp = "disabled";
+            }
+            else if (value <= 0)
+            {
+                Counter = 1;
+                DisabledDown = "disabled";
+            }
+            else
+            {
+                Counter = value;
+            }
+        }
+    }
 
     public async Task CountUp()
     {
-        int ordersize = counter;
-        ordersize++;
-        await CheckOrderSize(ordersize);
+        var orderSize = Counter;
+        orderSize++;
+        await CheckOrderSize(orderSize);
     }
 
     public async Task CountDown()
     {
-        int ordersize = counter;
-        ordersize--;
-        await CheckOrderSize(ordersize);
+        var orderSize = Counter;
+        orderSize--;
+        await CheckOrderSize(orderSize);
     }
 
-    public async Task CheckOrderSize(int ordersize)
+    public async Task CheckOrderSize(int orderSize)
     {
         await Task.Run(() =>
         {
-            if (ordersize <= 0)
+            if (orderSize <= 0)
             {
-                counter = 1;
-                DisabeldDown = "disabled";
+                Counter = 1;
+                DisabledDown = "disabled";
             }
-            else if (ordersize >= 100)
+            else if (orderSize >= 100)
             {
-                counter = 99;
-                DisabeldUp = "disabled";
+                Counter = 99;
+                DisabledUp = "disabled";
             }
             else
             {
-                counter = ordersize;
-                DisabeldUp = "btn-my-hover";
-                DisabeldDown = "btn-my-hover";
+                Counter = orderSize;
+                DisabledUp = "btn-my-hover";
+                DisabledDown = "btn-my-hover";
             }
 
         });
