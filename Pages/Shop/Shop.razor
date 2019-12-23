@@ -1,0 +1,34 @@
+﻿@page "/shop"
+<h3>Shop</h3>
+
+<div class="d-flex justify-content-center">
+    @foreach (var item in ShopItemModel.ShopItemsList)
+    {
+        <ShopItem ItemData=@item ShortDescription=@ShopItemModel.GetDescriptionShort(item.Id)></ShopItem>
+    }
+</div>
+
+@code {
+    public ShopItemModel ShopItemModel { get; set; }
+
+    public IEnumerable<ShopItemData> DataSet()
+    {
+        IEnumerable<ShopItemData> items = new List<ShopItemData>()
+{
+            new ShopItemData() {Id = 1, Name = "Rotwein", Description = "Das ist ein Rotwein. Das ist ein Rotwein. Das ist ein Rotwein. Das ist ein Rotwein."},
+            new ShopItemData() {Id = 2, Name = "Weiswein", Description = "Das ist ein Weiswein"},
+            new ShopItemData() {Id = 3, Name = "Champagner", Description = "Das ist ein Champagner."},
+            new ShopItemData() {Id = 4 , Name = "Rose", Description = "Das ist ein Rose."}
+        };
+
+        return items;
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        ShopItemModel = new ShopItemModel(DataSet());
+
+        return base.OnInitializedAsync();
+    }
+
+}
