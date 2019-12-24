@@ -1,5 +1,4 @@
 ﻿@using numbersBlazor.Pages.Shop
-<ShoppingCart></ShoppingCart>
 <AuthorizeView>
     <Authorized>
         <a href="Identity/Account/Manage">Hello, @context.User.Identity.Name!</a>
@@ -12,3 +11,4 @@
         <a href="Identity/Account/Login">Log in</a>
     </NotAuthorized>
 </AuthorizeView>
+<ShoppingCart></ShoppingCart>

@@ -1,12 +1,37 @@
 ﻿@inject ShopStateProvider State
 @implements IDisposable
-<div>
-    <button class="btn btn-primary">
+<div class="dropdown ml-3">
+    <button class="btn btn-primary" @onclick="@ToggleDropdown">
         <i class="fas fa-shopping-cart"></i> @State.ShoppingCart.Count()
     </button>
+    <div class="dropdown-content @Dropdown">
+        @if (!State.ShoppingCart.Any())
+        {
+            <div>Der Warenkorb ist leer.</div>
+        }
+        else
+        {
+            @foreach (var item in State.ShoppingCart)
+            {
+                <div id="SchoppingCartId @item.Id" class="row">
+                    <div class="col-4">@item.Name</div>
+                    <div class="col-4">@item.OrderAmount</div>
+                    <div class="col-4">@item.Price</div>
+                </div>
+
+            }
+        }
+    </div>
 </div>
 
 @code {
+
+    private string Dropdown { get; set; } = string.Empty;
+
+    private void ToggleDropdown()
+    {
+        Dropdown = Dropdown.Equals("") ? "dropdownclick" : string.Empty;
+    }
 
     protected override void OnInitialized()
     {

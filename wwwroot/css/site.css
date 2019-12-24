@@ -15,6 +15,18 @@ input[type=number] {
     font-size: 10px;
 }
 
+/*Shopping*/
+.shopping{
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    position: inherit !important;
+    max-width: 15em !important;
+}
+
 .input-shopitemcounter {
     border: 1px solid #ced4da;
     max-width: 2rem;
@@ -28,6 +40,31 @@ input[type=number] {
     padding: .75rem 1.25rem;
     background-color: rgb(255, 255, 255);
     border-top: 1px solid rgba(0,0,0,.125);
+}
+
+/*Dropdown Cart*/
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 250px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    right: 0;
+    margin-top: 0.3em;
+    border: 1px solid rgba(27, 110, 194, 0.5);
+    border-radius: 0.5em;
+}
+
+.dropdownclick {
+    display: block !important;
 }
 
 .btn-noshadow:focus, .btn-noshadow:active {

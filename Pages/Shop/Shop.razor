@@ -1,7 +1,7 @@
 ﻿@page "/shop"
 <h3>Shop</h3>
 
-<div class="d-flex justify-content-center">
+<div class="shopping justify-content-center">
     @foreach (var item in ShopItemModel.ShopItemsList)
     {
         <ShopItem ItemData=@item ShortDescription=@ShopItemModel.GetDescriptionShort(item.Id)></ShopItem>
