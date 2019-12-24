@@ -1,5 +1,24 @@
-﻿<h3>ShoppingCart</h3>
+﻿@inject ShopStateProvider State
+@implements IDisposable
+<div>
+    <button class="btn btn-primary">
+        <i class="fas fa-shopping-cart"></i> @State.ShoppingCart.Count()
+    </button>
+</div>
 
 @code {
+
+    protected override void OnInitialized()
+    {
+
+        State.OnChange += StateHasChanged;
+
+    }
+
+    public void Dispose()
+    {
+        State.OnChange -= StateHasChanged;
+    }
+
 
 }
