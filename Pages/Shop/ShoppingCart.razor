@@ -11,15 +11,21 @@
         }
         else
         {
-            @foreach (var item in State.ShoppingCart)
-            {
-                <div id="SchoppingCartId @item.Id" class="row">
-                    <div class="col-4">@item.Name</div>
-                    <div class="col-4">@item.OrderAmount</div>
-                    <div class="col-4">@item.Price</div>
-                </div>
-
-            }
+            <table>
+                <tr>
+                    <th>Produkt:</th>
+                    <th>Menge:</th>
+                    <th>Preis:</th>
+                </tr>
+                @foreach (var item in State.ShoppingCart)
+                {
+                    <tr id="SchoppingCartId @item.Id">
+                        <td>@item.Name</td>
+                        <td>@item.OrderAmount</td>
+                        <td>@item.Price</td>
+                    </tr>
+                }
+            </table>
         }
     </div>
 </div>
