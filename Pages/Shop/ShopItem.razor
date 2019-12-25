@@ -8,20 +8,20 @@
     </div>
     <div class="card-my-block">
         <div class="row">
-            <div class="col-6 text-center d-flex align-items-center font-sice-800">
+            <div class="col col-6 text-center align-items-center font-sice-800">
                 Preis pro "Einheit"
             </div>
-            <div class="col-6 text-right font-weight-bold">
+            <div class="col col-6 text-right font-weight-bold">
                 XX.XX Fr.
             </div>
         </div>
     </div>
     <div class="card-footer">
         <div class=" row">
-            <div class="col-6 text-center">
+            <div class="col col-6 text-center">
                 <button @onclick="@AddToCart" class="btn btn-primary btn-sm">In den <i class="fas fa-cart-plus"></i></button>
             </div>
-            <div class="col-6 flex-column-reverse">
+            <div class="col col-6 flex-column-reverse">
 
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -116,6 +116,10 @@
         });
     }
 
+    protected override void OnInitialized()
+    {
+        State.AddShopItem(ItemData);
+    }
 
     public void AddToCart()
     {

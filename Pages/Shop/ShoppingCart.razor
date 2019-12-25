@@ -7,24 +7,34 @@
     <div class="dropdown-content @Dropdown">
         @if (!State.ShoppingCart.Any())
         {
-            <div>Der Warenkorb ist leer.</div>
+            <div class=" alert alert-info">Der Warenkorb ist leer.</div>
         }
         else
         {
+            <div>Mein Warenkorb Artikel: @State.ShoppingCart.Count() </div>
+            <hr />
             <table>
-                <tr>
-                    <th>Produkt:</th>
-                    <th>Menge:</th>
-                    <th>Preis:</th>
-                </tr>
-                @foreach (var item in State.ShoppingCart)
-                {
-                    <tr id="SchoppingCartId @item.Id">
-                        <td>@item.Name</td>
-                        <td>@item.OrderAmount</td>
-                        <td>@item.Price</td>
+                <thead>
+                    <tr>
+                        <th colspan="2">Artikel:</th>
+                        <th>Menge:</th>
+                        <th>Summe/Stk:</th>
                     </tr>
-                }
+                </thead>
+                <tbody>
+                    @foreach (var item in State.ShoppingCart)
+                    {
+                        <tr id="SchoppingCartId @item.Id">
+                            <td>ImagePlaceholder</td>
+                            <td>
+                                <div>@item.Name</div>
+                                <div>Artikelnummer: @item.Id</div>
+                            </td>
+                            <td>@item.OrderAmount</td>
+                            <td>@(item.OrderAmount * item.Price)</td>
+                        </tr>
+                    }
+                </tbody>
             </table>
         }
     </div>
@@ -41,9 +51,7 @@
 
     protected override void OnInitialized()
     {
-
         State.OnChange += StateHasChanged;
-
     }
 
     public void Dispose()

@@ -15,6 +15,11 @@ input[type=number] {
     font-size: 10px;
 }
 
+/*Bootstrap override*/
+.col {
+    position: inherit !important;
+}
+
 /*Shopping*/
 .cart-header {
     border: 1px solid rgba(0, 0, 0, 0.2);
