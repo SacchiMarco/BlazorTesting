@@ -71,8 +71,12 @@ input[type=number] {
 }
 
 /*Shopping Cart Table Dorpdown*/
+.dropdown-table table {
+    border-collapse: collapse;
+}
+
 .dropdown-table thead {
-    border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     color: #808080;
     font-size: 1em;
 }
@@ -87,14 +91,18 @@ input[type=number] {
     font-size: 0.6em;
 }
 
+.dropdown-table tbody td:first-child {
+    border-bottom: none;
+}
+
 .dropdown-table tbody td {
-    font-size: 0.8em
+    font-size: 0.8em;
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
 }
 
 .dropdown-table tbody #cart-img {
     width: 100px;
-    display: inline-flex;
-    justify-content: center;
+    text-align: center;
     padding: 10px 0;
 }
 
@@ -105,8 +113,8 @@ input[type=number] {
 }
 
 .dropdown-table tbody #cart-orderamount-input {
-    display: flex;
-    justify-content: center;
+    
+    text-align: center;
 }
 
 .dropdown-table tbody #cart-orderamount-input input {

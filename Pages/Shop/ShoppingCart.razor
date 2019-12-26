@@ -42,15 +42,9 @@
         Dropdown = Dropdown.Equals("") ? "dropdownclick" : string.Empty;
     }
 
-    private void CloseOnClickOutside(MouseEventArgs e)
+    private void CloseOnClickOutside()
     {
-        var click = e.Detail;
-        Console.WriteLine(click.ToString());
-
-        if (click == 1)
-        {
-            Dropdown = string.Empty;
-        }
+        Dropdown = string.Empty;
     }
 
     protected override void OnInitialized()
