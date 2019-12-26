@@ -41,7 +41,21 @@ namespace numbersBlazor.State
             NotifyStateChanged();
         }
 
-        private void NotifyStateChanged() => OnChange?.Invoke();
+        private void NotifyStateChanged()
+        {
+            try
+            {
+                OnChange?.Invoke();
+            }
+            catch (Exception e)
+            {
+                /*
+                 * Prevent double load Invoke() if
+                 * user refresh page
+                 */
+            }
+
+        }
 
         private int GetIndexOfShoppingCartItem(ShopItemData shopItem)
         {
