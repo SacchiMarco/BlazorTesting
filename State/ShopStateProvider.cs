@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Components;
 
 
 namespace numbersBlazor.State
@@ -26,13 +25,27 @@ namespace numbersBlazor.State
             }
             else
             {
-                var index = ShoppingCart.IndexOf(item);
-                ShoppingCart[index] = shopItem;
+
+                ShoppingCart[GetIndexOfShoppingCartItem(item)] = shopItem;
             }
 
             NotifyStateChanged();
         }
 
+        public void SetOrderAmount(ShopItemData shopItem)
+        {
+            var item = ShoppingCart.First(c => c.Id == shopItem.Id);
+            item.OrderAmount = shopItem.OrderAmount;
+            ShoppingCart[GetIndexOfShoppingCartItem(item)] = item;
+
+            NotifyStateChanged();
+        }
+
         private void NotifyStateChanged() => OnChange?.Invoke();
+
+        private int GetIndexOfShoppingCartItem(ShopItemData shopItem)
+        {
+            return ShoppingCart.IndexOf(shopItem);
+        }
     }
 }

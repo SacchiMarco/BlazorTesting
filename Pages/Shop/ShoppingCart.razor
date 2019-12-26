@@ -4,7 +4,7 @@
     <button class="btn btn-primary" @onclick="@ToggleDropdown">
         <i class="fas fa-shopping-cart"></i> @State.ShoppingCart.Count()
     </button>
-    <div class="dropdown-content @Dropdown">
+    <div class="dropdown-content dropdown-table @Dropdown">
         @if (!State.ShoppingCart.Any())
         {
             <div class=" alert alert-info">Der Warenkorb ist leer.</div>
@@ -18,27 +18,20 @@
                     <tr>
                         <th colspan="2">Artikel:</th>
                         <th>Menge:</th>
-                        <th>Summe/Stk:</th>
+                        <th>Summe: <span>(in Fr.)</span></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in State.ShoppingCart)
                     {
-                        <tr id="SchoppingCartId @item.Id">
-                            <td>ImagePlaceholder</td>
-                            <td>
-                                <div>@item.Name</div>
-                                <div>Artikelnummer: @item.Id</div>
-                            </td>
-                            <td>@item.OrderAmount</td>
-                            <td>@(item.OrderAmount * item.Price)</td>
-                        </tr>
+                        <ShoppingCartItem ShopItem="@item"></ShoppingCartItem>
                     }
                 </tbody>
             </table>
         }
     </div>
 </div>
+<div class="close-cart-onclick-outside @Dropdown" @onclick="@CloseOnClickOutside"></div>
 
 @code {
 
@@ -47,6 +40,17 @@
     private void ToggleDropdown()
     {
         Dropdown = Dropdown.Equals("") ? "dropdownclick" : string.Empty;
+    }
+
+    private void CloseOnClickOutside(MouseEventArgs e)
+    {
+        var click = e.Detail;
+        Console.WriteLine(click.ToString());
+
+        if (click == 1)
+        {
+            Dropdown = string.Empty;
+        }
     }
 
     protected override void OnInitialized()

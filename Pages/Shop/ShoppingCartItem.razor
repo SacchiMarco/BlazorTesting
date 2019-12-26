@@ -1,0 +1,46 @@
+﻿@inject ShopStateProvider State
+
+<tr id="SchoppingCartId @ShopItem.Id">
+    <td id="cart-img">
+        <img src="https://via.placeholder.com/80" />
+    </td>
+    <td id="cart-item">
+        <div>@ShopItem.Name</div>
+        <div>Artikelnummer: @ShopItem.Id</div>
+    </td>
+    <td id="cart-orderamount-input">
+        <input type="number"
+               @bind-value="UpdateOderAmount"
+               @bind-value:event="oninput" />
+    </td>
+    <td id="cart-summe">@(ShopItem.OrderAmount * ShopItem.Price)</td>
+</tr>
+
+@code {
+    [Parameter]
+    public ShopItemData ShopItem { get; set; }
+
+    public int UpdateOderAmount
+    {
+        get => ShopItem.OrderAmount;
+        set
+        {
+            if (value >= 100)
+            {
+                ShopItem.OrderAmount = 99;
+            }
+            else if (value <= 0)
+            {
+                ShopItem.OrderAmount = 1;
+            }
+            else
+            {
+                ShopItem.OrderAmount = value;
+            }
+
+            State.SetOrderAmount(ShopItem);
+        }
+
+    }
+
+}

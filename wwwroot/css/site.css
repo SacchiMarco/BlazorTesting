@@ -20,8 +20,107 @@ input[type=number] {
     position: inherit !important;
 }
 
+.oi {
+    position: inherit !important;
+}
+
+.input-group {
+     position: inherit !important;
+}
+
+.form-control-plaintext {
+    position: inherit !important;
+}
+
+/*ShoppingCart*/
+/*Dropdown Cart*/
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.close-cart-onclick-outside {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 200px;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 250px;
+    max-width: fit-content;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1000;
+    right: 0;
+    margin-top: 0.3em;
+    border: 1px solid rgba(27, 110, 194, 0.5);
+    border-radius: 0.5em;
+}
+
+.dropdownclick {
+    display: block !important;
+}
+
+/*Shopping Cart Table Dorpdown*/
+.dropdown-table thead {
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+    color: #808080;
+    font-size: 1em;
+}
+
+.dropdown-table thead th {
+    padding: 1px 5px;
+    margin: 0 1px;
+    white-space: nowrap;
+}
+
+.dropdown-table thead th span {
+    font-size: 0.6em;
+}
+
+.dropdown-table tbody td {
+    font-size: 0.8em
+}
+
+.dropdown-table tbody #cart-img {
+    width: 100px;
+    display: inline-flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.dropdown-table tbody #cart-item {
+    min-width: 200px;
+    padding: 2em;
+    
+}
+
+.dropdown-table tbody #cart-orderamount-input {
+    display: flex;
+    justify-content: center;
+}
+
+.dropdown-table tbody #cart-orderamount-input input {
+    max-width: 3em;
+    text-align: center;
+}
+
+.dropdown-table tbody #cart-summe {
+    text-align: right;
+    padding: 2em;
+}
+
 /*Shopping*/
-.cart-header {
+        .cart-header {
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 .cart-item {
@@ -53,31 +152,6 @@ input[type=number] {
     border-top: 1px solid rgba(0,0,0,.125);
 }
 
-/*Dropdown Cart*/
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 250px;
-    max-width: fit-content;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
-    z-index: 1;
-    right: 0;
-    margin-top: 0.3em;
-    border: 1px solid rgba(27, 110, 194, 0.5);
-    border-radius: 0.5em;
-}
-
-.dropdownclick {
-    display: block !important;
-}
 
 .btn-noshadow:focus, .btn-noshadow:active {
     box-shadow: none !important;
