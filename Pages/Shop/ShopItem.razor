@@ -31,7 +31,7 @@
                     </div>
                     <input class="form-control-plaintext form-control-sm text-center font-sice-800 noshadow input-shopitemcounter" type="number"
                            @bind-value="UpdateCounter"
-                           @bind-value:event="oninput" />
+                           @bind-value:event="onchange" />
                     <div class="input-group-append">
                         <div class="input-group-text btn-noshadow btn-sm order-count-btn @DisabledUp" @onclick="CountUp">
                             <span class="oi oi-plus icon"></span>

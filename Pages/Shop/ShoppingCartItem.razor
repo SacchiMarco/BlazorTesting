@@ -11,9 +11,9 @@
     <td id="cart-orderamount-input">
         <input type="number"
                @bind-value="UpdateOderAmount"
-               @bind-value:event="oninput" />
+               @bind-value:event="onchange" />
     </td>
-    <td id="cart-summe">@(ShopItem.OrderAmount * ShopItem.Price)</td>
+    <td id="cart-summe">@(Math.Round((ShopItem.OrderAmount * ShopItem.Price), 2).ToString("0.00"))</td>
 </tr>
 
 @code {
@@ -25,11 +25,12 @@
         get => ShopItem.OrderAmount;
         set
         {
+            Console.WriteLine(value);
             if (value >= 100)
             {
                 ShopItem.OrderAmount = 99;
             }
-            else if (value <= 0)
+            else if (value == 0)
             {
                 ShopItem.OrderAmount = 1;
             }

@@ -96,8 +96,10 @@ input[type=number] {
 }
 
 .dropdown-table tbody td {
+    vertical-align: top;
     font-size: 0.8em;
     border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+    padding: 1em 1.5em;
 }
 
 .dropdown-table tbody #cart-img {
@@ -108,13 +110,11 @@ input[type=number] {
 
 .dropdown-table tbody #cart-item {
     min-width: 200px;
-    padding: 2em;
-    
 }
 
 .dropdown-table tbody #cart-orderamount-input {
-    
     text-align: center;
+    padding: 1em 0;
 }
 
 .dropdown-table tbody #cart-orderamount-input input {
@@ -124,7 +124,6 @@ input[type=number] {
 
 .dropdown-table tbody #cart-summe {
     text-align: right;
-    padding: 2em;
 }
 
 /*Shopping*/
