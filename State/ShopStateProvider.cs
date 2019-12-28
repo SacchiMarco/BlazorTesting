@@ -49,6 +49,7 @@ namespace numbersBlazor.State
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 /*
                  * Prevent double load Invoke() if
                  * user refresh page
