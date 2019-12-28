@@ -15,6 +15,10 @@ input[type=number] {
     font-size: 10px;
 }
 
+.color-gray {
+    color: #808080;
+}
+
 /*Bootstrap override*/
 .col {
     position: inherit !important;
@@ -33,6 +37,18 @@ input[type=number] {
 }
 
 /*ShoppingCart*/
+/*Cart Buttons*/
+.cart-buttons {
+    margin: 0.1em;
+}
+
+.cart-buttons button {
+    margin: 0.6em 0.2em;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
 /*Dropdown Cart*/
 .dropdown {
     position: relative;
@@ -72,6 +88,7 @@ input[type=number] {
 /*Shopping Cart Table Dorpdown*/
 .dropdown-table table {
     border-collapse: collapse;
+    border-bottom: 1px solid black;
 }
 
 .dropdown-table thead {
@@ -104,7 +121,7 @@ input[type=number] {
 .dropdown-table tbody #cart-img {
     width: 100px;
     text-align: center;
-    padding: 10px 0;
+    padding: 1em 1em;
 }
 
 .dropdown-table tbody #cart-item {
@@ -121,12 +138,27 @@ input[type=number] {
     text-align: center;
 }
 
-.dropdown-table tbody #cart-summe {
+.dropdown-table tbody .cart-summe {
     text-align: right;
+    font-weight: bold;
 }
 
+.dropdown-table tbody .cart-summe-text {
+    text-align: right;
+    font-size: 10px;
+    padding-right: 1em;
+}
+.dropdown-table tbody .cart-summe-text span {
+    font-weight: bold;
+    color: #808080;
+    font-size: 15px;
+}
+
+.cart-endsumme {
+    text-decoration: underline double black;
+}
 /*Shopping*/
-        .cart-header {
+.cart-header {
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 .cart-item {

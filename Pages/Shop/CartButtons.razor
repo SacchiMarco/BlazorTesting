@@ -1,0 +1,14 @@
+﻿<div class="cart-buttons">
+    <button @onclick="OnBackToShopping" class=" btn-dark"> &lt; weiter Shoppen</button>
+    <button @onclick="OnGoToCheckout" class=" btn-primary">zur Kasse &gt;</button>
+</div>
+
+@code {
+
+    [Parameter]
+    public EventCallback OnBackToShopping { get; set; }
+
+    [Parameter]
+    public EventCallback OnGoToCheckout { get; set; }
+
+}

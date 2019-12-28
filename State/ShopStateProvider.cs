@@ -11,6 +11,17 @@ namespace numbersBlazor.State
         public List<ShopItemData> ShoppingCart { get; private set; } = new List<ShopItemData>();
         public event Action OnChange;
 
+        public double GetCartCheckoutSumme()
+        {
+            double summe = 0;
+
+            foreach (var item in ShoppingCart)
+            {
+                summe += (item.Price * item.OrderAmount);
+            }
+
+            return Math.Round(summe, 2, MidpointRounding.AwayFromZero);
+        }
         public void AddShopItem(ShopItemData shopItem)
         {
             ShopItemData item = null;

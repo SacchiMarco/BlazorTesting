@@ -7,11 +7,16 @@
     <div class="dropdown-content dropdown-table @Dropdown">
         @if (!State.ShoppingCart.Any())
         {
-            <div class=" alert alert-info">Der Warenkorb ist leer.</div>
+            <div class="alert alert-info">Der Warenkorb ist leer.</div>
         }
         else
         {
-            <div>Mein Warenkorb Artikel: @State.ShoppingCart.Count() </div>
+            <CartButtons OnBackToShopping="ToggleDropdown"></CartButtons>
+            <hr />
+            <div>
+                <h4 style="display: inline;">Mein Warenkorb </h4>
+                <span class="color-gray"> Artikel: @State.ShoppingCart.Count()</span>
+            </div>
             <hr />
             <table>
                 <thead>
@@ -26,8 +31,15 @@
                     {
                         <ShoppingCartItem ShopItem="@item"></ShoppingCartItem>
                     }
+                    <tr>
+                        <td class="cart-summe" colspan="4">
+                            <span class="color-gray cart-summe-text">inkl. Mwst. <span>Summe:</span></span>
+                            <span class="cart-endsumme">@State.GetCartCheckoutSumme()</span>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
+            <CartButtons OnBackToShopping="ToggleDropdown"></CartButtons>
         }
     </div>
 </div>
