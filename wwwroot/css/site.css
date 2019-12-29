@@ -36,6 +36,31 @@ input[type=number] {
     position: inherit !important;
 }
 
+.btn-noshadow:focus, .btn-noshadow:active {
+    box-shadow: none !important;
+    outline: 0;
+}
+
+.order-count-btn {
+    padding: 0px 4px 0px 4px;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.btn-my-hover:hover {
+    background-color: darkgray;
+    color: #fff;
+}
+
+.noshadow {
+    box-shadow: none !important;
+    outline: 0;
+}
+
+.card-footer {
+    padding: 0.5em 1em;
+}
+
 /*ShoppingCart*/
 /*Cart Buttons*/
 .cart-buttons {
@@ -170,9 +195,11 @@ input[type=number] {
     flex-wrap: wrap;
 }
 
+/*ShopItem*/
 .card {
     position: inherit !important;
-    max-width: 15em !important;
+    max-width: 220px !important;
+    min-width: 220px;
 }
 
 .input-shopitemcounter {
@@ -185,34 +212,30 @@ input[type=number] {
 }
 
 .card-my-block {
-    padding: .75rem 1.25rem;
+    padding: 0.75rem 0.5rem;
     background-color: rgb(255, 255, 255);
     border-top: 1px solid rgba(0,0,0,.125);
 }
 
-
-.btn-noshadow:focus, .btn-noshadow:active {
-    box-shadow: none !important;
-    outline: 0;
+.shopitem-flex {
+    display: flex;
+    justify-content: space-between;
 }
 
-.order-count-btn {
-    padding: 0px 4px 0px 4px;
-    font-weight: 600;
-    font-size: 1.125rem;
+.shopitem .shopitem-price {
+    display: inline;
+    text-align: right;
 }
 
-.btn-my-hover:hover{
-    background-color:darkgray;
-    color: #fff;
-}
-
-.noshadow {
-    box-shadow: none !important;
-    outline: 0;
+.shopitem .shopitem-unit {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
 }
 
 
+
+/*Standart*/
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }

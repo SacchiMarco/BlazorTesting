@@ -1,18 +1,18 @@
 ﻿@inject ShopStateProvider State
 
-<div class="card border-secondary m-2">
+<div class="card border-secondary m-2 shopitem">
     <h5 class="card-header text-center">@ItemData.Name</h5>
     <div class="card-body text-center">
         <img height="120" width="120" class="" src="https://via.placeholder.com/120" />
         <div class="card-text text-center m-2"> @ShortDescription</div>
     </div>
     <div class="card-my-block">
-        <div class="row">
-            <div class="col col-6 text-center align-items-center font-sice-800">
+        <div class="shopitem-flex">
+            <div class="shopitem-unit font-sice-800">
                 Preis pro "Einheit"
             </div>
-            <div class="col col-6 text-right font-weight-bold">
-                XX.XX Fr.
+            <div class="shopitem-price font-weight-bold">
+                <span>@ItemData.Price.ToString("0.00") </span><span>Fr.</span>
             </div>
         </div>
     </div>
