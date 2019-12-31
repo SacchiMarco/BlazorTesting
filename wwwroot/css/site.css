@@ -212,9 +212,11 @@ input[type=number] {
 }
 
 .card-my-block {
+    max-width: 217px;
     padding: 0.75rem 0.5rem;
     background-color: rgb(255, 255, 255);
     border-top: 1px solid rgba(0,0,0,.125);
+    line-height: 1.1rem;
 }
 
 .shopitem-flex {
